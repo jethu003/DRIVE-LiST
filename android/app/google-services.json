@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "933029958515",
+    "project_id": "drivelist-8deac",
+    "storage_bucket": "drivelist-8deac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933029958515:android:ec8806a84e31d525b92b06",
+        "android_client_info": {
+          "package_name": "com.example.drivelist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmMx3i8XBJaTZS3WghHxuZjjNd2gf6Akg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
