@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:drivelist/core/appcolors.dart';
 
@@ -35,7 +35,7 @@ class _AddVehicleSheetState extends State<AddVehicleSheet> {
             mainAxisSize: MainAxisSize.min,
             children: [
 
-              /// 🔹 Drag Handle
+              
               Container(
                 width: 40,
                 height: 5,
@@ -47,7 +47,7 @@ class _AddVehicleSheetState extends State<AddVehicleSheet> {
 
               const SizedBox(height: 15),
 
-              /// 🔹 Title
+              
               const Text(
                 "Add Vehicle",
                 style: TextStyle(
@@ -66,7 +66,7 @@ class _AddVehicleSheetState extends State<AddVehicleSheet> {
 
               const SizedBox(height: 25),
 
-              /// 🔹 Save Button
+              
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -78,8 +78,7 @@ class _AddVehicleSheetState extends State<AddVehicleSheet> {
                     ),
                   ),
                   onPressed: () async {
-                    await addVehicle();
-                    Navigator.pop(context);
+                    
                   },
                   child: const Text(
                     "Save Vehicle",
@@ -96,7 +95,7 @@ class _AddVehicleSheetState extends State<AddVehicleSheet> {
     );
   }
 
-  /// 🔹 Reusable Input Field
+ 
   Widget _buildTextField(
       TextEditingController controller,
       String label,
@@ -120,14 +119,5 @@ class _AddVehicleSheetState extends State<AddVehicleSheet> {
     );
   }
 
-  Future<void> addVehicle() async {
-    await FirebaseFirestore.instance.collection('vehicles').add({
-      "model": modelController.text,
-      "color": colorController.text,
-      "wheelType": wheelController.text,
-      "year": yearController.text,
-      "image": imageController.text,
-      "createdAt": Timestamp.now(),
-    });
-  }
+
 }
