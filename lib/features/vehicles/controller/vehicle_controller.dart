@@ -22,8 +22,7 @@ class VehicleController extends GetxController {
     _listenToVehicles();
   }
 
-  // ✅ Fix 1: Wrapped snackbar in addPostFrameCallback to avoid
-  //           "Null check operator" crash before GetX overlay is ready
+
   void _listenToVehicles() {
     _data.getVehiclesStream().listen(
       (data) {
@@ -33,10 +32,10 @@ class VehicleController extends GetxController {
       onError: (e) {
         isLoading.value = false;
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (Get.isOverlaysOpen) return; // don't stack snackbars
+          if (Get.isOverlaysOpen) return;
           Get.snackbar(
             'Connection Error',
-            'Could not load vehicles. Check Firestore rules.',
+            'Could not load vehicles.',
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: Colors.red.shade100,
             duration: const Duration(seconds: 3),
@@ -46,8 +45,7 @@ class VehicleController extends GetxController {
     );
   }
 
-  // ✅ Fix 2: Wrapped all snackbars inside pickAndUploadImage
-  //           in addPostFrameCallback for safety
+ 
   Future<String?> pickAndUploadImage() async {
     XFile? picked;
 
@@ -58,7 +56,7 @@ class VehicleController extends GetxController {
         maxWidth: 1200,
       );
     } catch (e) {
-      // ✅ Fix 3: Catch MissingPluginException gracefully
+     
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Get.snackbar(
           'Plugin Error',
@@ -70,7 +68,7 @@ class VehicleController extends GetxController {
       return null;
     }
 
-    if (picked == null) return null; // user cancelled
+    if (picked == null) return null; 
 
     pickedImageFile.value = File(picked.path);
     isUploadingImage.value = true;
@@ -97,7 +95,7 @@ class VehicleController extends GetxController {
     pickedImageFile.value = null;
   }
 
-  // ✅ Fix 4: Wrapped snackbars in addVehicle in addPostFrameCallback
+
   Future<void> addVehicle(VehicleModel model) async {
     isSaving.value = true;
     try {
@@ -106,7 +104,7 @@ class VehicleController extends GetxController {
       Get.back();
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Get.snackbar(
-          '✅ Added',
+          ' Added',
           '${model.vehicleModel} added to your fleet!',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.green.shade100,
@@ -127,7 +125,7 @@ class VehicleController extends GetxController {
     }
   }
 
-  // ✅ Fix 5: deleteVehicle — safely pop only if a page is on the stack
+
   Future<void> deleteVehicle(String id, String name) async {
     final confirmed = await Get.dialog<bool>(
       AlertDialog(
@@ -151,7 +149,7 @@ class VehicleController extends GetxController {
 
     if (confirmed == true) {
       await _data.deleteVehicle(id);
-      // ✅ Only pop if there's a page to pop back to
+      
       if (Get.currentRoute != '/') {
         Get.back();
       }

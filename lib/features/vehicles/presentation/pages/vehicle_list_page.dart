@@ -1,8 +1,8 @@
 import 'package:drivelist/core/appcolors.dart';
+import 'package:drivelist/features/vehicles/presentation/pages/add_vehicle_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/vehicle_controller.dart';
-import '../widgets/add_vehicle_sheet.dart';
 import '../widgets/vehicle_card.dart';
 
 class VehicleListPage extends StatelessWidget {
@@ -17,49 +17,14 @@ class VehicleListPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.creamWhite,
         elevation: 0,
-        title: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(7),
-              decoration: BoxDecoration(
-                color: AppColors.primaryBlue,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Icon(Icons.directions_car,
-                  color: Colors.white, size: 18),
-            ),
-            const SizedBox(width: 10),
-            const Text(
-              'DRIVE LIST',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: AppColors.textDark,
-                letterSpacing: 1.5,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Obx(() => Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryBlue.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    '${controller.vehicleList.length} vehicles',
-                    style: const TextStyle(
-                      color: AppColors.primaryBlue,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12,
-                    ),
-                  ),
-                )),
+        title: const Text(
+          'Drive List',
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 25,
+            color: AppColors.textDark,
           ),
-        ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => showModalBottomSheet(
@@ -80,7 +45,7 @@ class VehicleListPage extends StatelessWidget {
         }
 
         if (controller.vehicleList.isEmpty) {
-          return _EmptyState();
+          return const _EmptyState();
         }
 
         return ListView.builder(
@@ -95,37 +60,18 @@ class VehicleListPage extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
+  const _EmptyState();
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: AppColors.primaryBlue.withOpacity(0.08),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.directions_car_outlined,
-                size: 56, color: AppColors.primaryBlue),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'No vehicles yet',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textDark,
-            ),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'Tap the button below to add\nyour first vehicle',
-            textAlign: TextAlign.center,
-            style: TextStyle(color: AppColors.textMuted, fontSize: 14),
-          ),
-        ],
+    return const Center(
+      child: Text(
+        'No vehicles yet',
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+          color: AppColors.textDark,
+        ),
       ),
     );
   }
