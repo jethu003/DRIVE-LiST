@@ -18,10 +18,10 @@ class VehicleDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ── Image Section ──
+            //  Image Section 
             _buildImageSection(),
 
-            // ── Content ──
+            //  Content 
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -51,7 +51,7 @@ class VehicleDetailPage extends StatelessWidget {
                   const Divider(color: AppColors.creamGrey),
                   const SizedBox(height: 20),
 
-                  // ── Spec Grid ──
+                 
                   const Text(
                     'Specifications',
                     style: TextStyle(

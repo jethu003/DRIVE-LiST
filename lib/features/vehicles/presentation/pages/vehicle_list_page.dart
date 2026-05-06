@@ -1,5 +1,6 @@
 import 'package:drivelist/core/appcolors.dart';
 import 'package:drivelist/features/vehicles/presentation/pages/add_vehicle_page.dart';
+import 'package:drivelist/features/vehicles/presentation/widgets/empty_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/vehicle_controller.dart';
@@ -45,7 +46,7 @@ class VehicleListPage extends StatelessWidget {
         }
 
         if (controller.vehicleList.isEmpty) {
-          return const _EmptyState();
+          return const EmptyState();
         }
 
         return ListView.builder(
@@ -59,20 +60,3 @@ class VehicleListPage extends StatelessWidget {
   }
 }
 
-class _EmptyState extends StatelessWidget {
-  const _EmptyState();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'No vehicles yet',
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-          color: AppColors.textDark,
-        ),
-      ),
-    );
-  }
-}

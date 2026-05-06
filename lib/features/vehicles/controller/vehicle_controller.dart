@@ -115,7 +115,7 @@ class VehicleController extends GetxController {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Get.snackbar(
           'Error',
-          'Failed to save vehicle. Check Firestore permissions.',
+          '',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red.shade100,
         );

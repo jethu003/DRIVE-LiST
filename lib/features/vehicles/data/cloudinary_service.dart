@@ -26,11 +26,11 @@ class CloudinaryService {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
         return json['secure_url'] as String?;
       } else {
-        print('❌ Failed ${response.statusCode}: ${response.body}');
+        print(' Failed ${response.statusCode}: ${response.body}');
         return null;
       }
     } catch (e) {
-      print('❌ Exception: $e');
+      print(' Exception: $e');
       return null;
     }
   }
